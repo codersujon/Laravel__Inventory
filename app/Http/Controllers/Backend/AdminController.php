@@ -46,9 +46,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $editData = DB::table('users')->find(Auth::user()->id);
+        return view('admin.admin_profile_edit', compact('editData'));
     }
 
     /**
