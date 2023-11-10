@@ -30,6 +30,7 @@ Route::get('/dashboard', function () {
 Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/profile', 'index')->name('admin.profile'); 
     Route::get('/admin/profile/edit', 'edit')->name('edit.profile'); 
+    Route::post('/admin/profile/update', 'update')->name('update.profile'); 
 });
 
 

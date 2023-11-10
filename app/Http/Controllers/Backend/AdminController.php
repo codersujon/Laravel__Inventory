@@ -53,11 +53,39 @@ class AdminController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the Profile Content
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+     
+        $id =  Auth::user()->id;
+        $user = DB::table('users')->find($id);
+        $user->name = strtoupper($request->name);
+
+        // For Image Name
+        $customName ="";
+        if($file = $request->file('profile_image')){
+
+            $customName =  date('YmdHi').'.'.$file->getClientOriginalExtension();
+            @unlink(public_path('upload/admin/images/'.$user->profile_image));
+            $file->move(public_path('upload/admin/images/'),$customName);
+
+        }else{
+            $customName =  $user->profile_image;
+        }
+        
+        // Query Builder
+        DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'name' => $request->fullname,
+                'username' => $request->username,
+                'email' => $request->email,
+                'profile_image' => $customName,
+                'updated_at' => now()
+        ]);
+
+        return redirect()->route('admin.profile');
     }
 
     /**

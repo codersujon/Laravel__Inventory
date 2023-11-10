@@ -26,25 +26,30 @@
         </div><!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="card">
-
-                    <img class="img-thumbnail rounded-circle avatar-xl m-auto my-4" src="{{ asset('backend') }}/assets/images/small/img-5.jpg" alt="Card image cap">
+                   
 
                     <div class="card-body">
                        <table class="table">
+                        <tr>
+                            <td>
+                                 {{-- Profile Image --}}
+                                <img class="img-thumbnail my-3" width="200" src="{{ (!empty($adminInfo->profile_image)? url('upload/admin/images/'.$adminInfo->profile_image): url('upload/no_image.jpg')) }}" alt="Profile Image">
+                            </td>
+                        </tr>
                             <tr>
                                 <td><h5>Fullname</h5></td>
                                 <td>:</td>
                                 <td>{{ $adminInfo->name }}</td>
                             </tr>
                             <tr>
-                                <td><h5>Username:</h5></td>
+                                <td><h5>Username</h5></td>
                                 <td>:</td>
                                 <td>{{ $adminInfo->username }}</td>
                             </tr>
                             <tr>
-                                <td><h5>Email:</h5></td>
+                                <td><h5>Email</h5></td>
                                 <td>:</td>
                                 <td>{{ $adminInfo->email }}</td>
                             </tr>

@@ -33,7 +33,7 @@ $pageTitle = "Admin Profile Edit"
             <div class="col-6">
                 <div class="card">
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="{{ route('update.profile') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             {{-- Fullname --}}
                             <div class="row mb-3">
