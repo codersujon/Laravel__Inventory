@@ -5,6 +5,10 @@ $pageTitle = "Admin Profile Edit"
 @extends('admin.admin_master')
 @section('main-content')
 
+{{-- jquery latest --}}
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+        crossorigin="anonymous"></script>
+
 <div class="page-content">
     <div class="container-fluid">
         <!-- start page title -->
@@ -55,6 +59,7 @@ $pageTitle = "Admin Profile Edit"
                                         id="email">
                                 </div>
                             </div>
+
                             {{-- Profile Image --}}
                             <div class="row mb-3">
                                 <label for="profile_image" class="col-sm-2 col-form-label">Profile Image</label>
@@ -68,7 +73,7 @@ $pageTitle = "Admin Profile Edit"
                             <div class="row mb-3">
                                 <label for="profile_image" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
-                                    <img class="rounded avatar-lg" alt="200x200" width="200" src="{{ asset('backend') }}/assets/images/small/img-3.jpg" data-holder-rendered="true">
+                                    <img class="rounded avatar-lg" alt="200x200" width="200" src="{{ asset('backend') }}/assets/images/small/img-3.jpg" data-holder-rendered="true" id="profile_image_show">
                                 </div>
                             </div>
 
@@ -89,5 +94,23 @@ $pageTitle = "Admin Profile Edit"
         {{-- main content end --}}
     </div>
 </div>
+
+
+<script type="text/javascript">
+
+       $(document).ready(function(){
+        /**
+         * For Dynamic Image Change jquery Code
+         */
+           $("#profile_image").change(function(e){
+               var reader = new FileReader();
+               reader.onload = function(e){
+                   $("#profile_image_show").attr('src', e.target.result);
+               }
+               reader.readAsDataURL(e.target.files['0'])
+           });
+       });
+
+</script>
 
 @endsection
