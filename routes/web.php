@@ -31,8 +31,9 @@ Route::controller(AdminController::class)->group(function(){
     Route::get('/admin/profile', 'index')->name('admin.profile'); 
     Route::get('/admin/profile/edit', 'edit')->name('edit.profile'); 
     Route::post('/admin/profile/update', 'update')->name('update.profile'); 
+    Route::get('/change/password', 'changePassword')->name('change.password'); 
+    Route::post('/update/password', 'updatePassword')->name('update.password'); 
 });
-
 
 
 Route::middleware('auth')->group(function () {
