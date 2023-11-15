@@ -26,10 +26,8 @@
         </div><!-- end page title -->
 
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-md-10 col-lg-5 col-xxl-4">
                 <div class="card">
-                   
-
                     <div class="card-body">
                        <table class="table">
                         <tr>
@@ -42,16 +40,28 @@
                                 <td><h5>Fullname</h5></td>
                                 <td>:</td>
                                 <td>{{ $adminInfo->name }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><h5>Username</h5></td>
                                 <td>:</td>
                                 <td>{{ $adminInfo->username }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><h5>Email</h5></td>
                                 <td>:</td>
                                 <td>{{ $adminInfo->email }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                        </table>
                        <a href="{{ route('edit.profile') }}" class="btn btn-primary waves-effect waves-light">
@@ -63,7 +73,6 @@
             </div>
         </div>
 
-      
     </div>
 </div>
 <!-- End Page-content -->
