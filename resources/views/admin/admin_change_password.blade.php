@@ -55,7 +55,7 @@
                                 <label for="newPassword" class="col-sm-2 col-form-label">New Password</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="password"  name="newPassword"
-                                        id="newPassword" placeholder="Enter New Password">
+                                        id="newPassword" placeholder="New Password">
                                 </div>
                             </div>
 
@@ -64,7 +64,7 @@
                                 <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="password"  name="confirmPassword"
-                                        id="confirmPassword" placeholder="Enter Confirm Password">
+                                        id="confirmPassword" placeholder="Confirm Password">
                                 </div>
                             </div>
                          

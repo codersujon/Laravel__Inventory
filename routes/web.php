@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Pos\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,14 @@ Route::controller(AdminController::class)->group(function(){
     Route::post('/admin/profile/update', 'update')->name('update.profile'); 
     Route::get('/change/password', 'changePassword')->name('change.password'); 
     Route::post('/update/password', 'updatePassword')->name('update.password'); 
+});
+
+/**
+ * Suppliers Controller
+ */
+
+Route::controller(SupplierController::class)->group(function(){
+    Route::get('/supplier/all', 'index')->name('supplier.all'); 
 });
 
 
