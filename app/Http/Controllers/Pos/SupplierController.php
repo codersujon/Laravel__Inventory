@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Pos;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Supplier;
+use Illuminate\Support\Facades\DB;
 
 class SupplierController extends Controller
 {
@@ -12,7 +14,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        echo "Supplier Controller";
+       $suppliers =  DB::table('suppliers')->latest()->get();
+       return view('backend.supplier.supplier_all', compact('suppliers'));
     }
 
     /**
