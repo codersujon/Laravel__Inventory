@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -31,7 +32,21 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       DB::table('suppliers')->insertOrIgnore([
+            "name"=> $request->supplier_name,
+            "mobile_no"=> $request->mobile_no,
+            "email"=> $request->supplier_email,
+            "address"=> $request->address,
+            "created_by"=> Auth::user()->id,
+            "created_at"=> now(),
+       ]);
+
+       $notification = array(
+            "message" => "Supplier Store Successfully!",
+            "alert-type"=>"success"
+        );
+
+        return redirect()->route('supplier.all')->with($notification);
     }
 
     /**
@@ -39,7 +54,7 @@ class SupplierController extends Controller
      */
     public function show(string $id)
     {
-        //
+       //
     }
 
     /**
@@ -55,7 +70,23 @@ class SupplierController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        DB::table('suppliers')->where('id', $id)->update([
+            "name"=> $request->supplier_name,
+            "mobile_no"=> $request->mobile_no,
+            "email"=> $request->supplier_email,
+            "status"=> $request->supplier_status,
+            "address"=> $request->address,
+            "updated_by"=> Auth::user()->id,
+            "updated_at"=> now(),
+       ]);
+
+       $notification = array(
+            "message" => "Supplier Updated Successfully!",
+            "alert-type"=>"success"
+        );
+
+        return redirect()->route('supplier.all')->with($notification);
     }
 
     /**
@@ -63,6 +94,15 @@ class SupplierController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleteItem = DB::table('suppliers')
+                        ->where('id', $id)
+                        ->delete();
+
+        $notification = array(
+            "message" => "Supplier Deleted Successfully!",
+            "alert-type"=>"success"
+        );
+
+        return redirect()->route('supplier.all')->with($notification);
     }
 }

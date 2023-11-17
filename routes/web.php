@@ -42,6 +42,10 @@ Route::controller(AdminController::class)->group(function(){
 
 Route::controller(SupplierController::class)->group(function(){
     Route::get('/supplier/all', 'index')->name('supplier.all'); 
+    Route::post('/supplier/add', 'store')->name('supplier.add');
+    Route::get('/supplier/show/{id}', 'show')->name('supplier.show'); 
+    Route::post('/supplier/update/{id}', 'update')->name('supplier.update');
+    Route::get('/supplier/destroy/{id}', 'destroy')->name('supplier.destroy'); 
 });
 
 
